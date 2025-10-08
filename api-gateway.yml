@@ -1,0 +1,36 @@
+
+server.port: 8081
+jwt:
+  secretKey: ;ajfoiwu4r9foiiuj948oreuu45jt93845ur3485fiufioirutfsjdsafhhjkahfer
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+spring:
+  application.name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+           - StripPrefix=2
+
+        - id: posts-service
+          uri: ${POSTS_SERVICE_URI:lb://POSTS-SERVICE}
+          predicates:
+            - Path=/api/v1/posts/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
+        - id: connections-service
+          uri: ${NOTIFICATION_SERVICE_URI:lb://CONNECTIONS-SERVICE}
+          predicates:
+            - Path=/api/v1/connections/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
