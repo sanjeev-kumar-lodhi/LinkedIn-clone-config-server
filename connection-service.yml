@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: Connections-Service
+    
+
+server:
+  port: 9030
+  servlet:
+    context-path: /connections
+    
+    
+  # database config
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: 12345678
+
+
+    
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ${spring.application.name}
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json:
+          trusted.packages: com.sanjeevsingh.linkedinProject.*
