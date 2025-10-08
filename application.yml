@@ -1,2 +1,9 @@
 # eureka config
 spring.client.service-url.defaultZone: http://discovery-service:/8761/eureka
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    hostname: localhost
+    prefer-ip-address: true
