@@ -28,7 +28,7 @@ spring:
             - name: AuthenticationFilter
 
         - id: connections-service
-          uri: ${NOTIFICATION_SERVICE_URI:lb://CONNECTIONS-SERVICE}
+          uri: ${CONNECTIONS_SERVICE_URI:lb://CONNECTIONS-SERVICE}
           predicates:
             - Path=/api/v1/connections/**
           filters:
