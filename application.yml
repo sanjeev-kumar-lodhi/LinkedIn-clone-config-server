@@ -1,19 +1,9 @@
-
-spring:
-  application:
-    name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/sanjeev-kumar-lodhi/LinkedIn-clone-config-server
-          default-label: main  
-
-
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://discovery-service:8761/eureka/
       
   instance:
     instance-id: ${spring.application.name}:${server.port}
