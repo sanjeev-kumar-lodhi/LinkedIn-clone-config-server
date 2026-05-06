@@ -9,3 +9,12 @@ eureka:
     instance-id: ${spring.application.name}:${server.port}
     hostname: localhost
     prefer-ip-address: true
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+    
