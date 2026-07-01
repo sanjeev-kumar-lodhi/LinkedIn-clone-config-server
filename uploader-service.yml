@@ -1,6 +1,7 @@
-
-server.port: 9050
-server.servlet.context-path : /uploads
+server:
+  port: 9050
+  servlet:
+    context-path: /uploads
 cloudinary:
   cloud-name: dulbyxcpo
   api-key: 642614243534366
