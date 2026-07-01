@@ -18,6 +18,8 @@ spring:
             - Path=/api/v1/users/**
           filters:
            - StripPrefix=2
+           - name: AuthenticationFilter
+           
 
         - id: posts-service
           uri: ${POSTS_SERVICE_URI:lb://POSTS-SERVICE}
