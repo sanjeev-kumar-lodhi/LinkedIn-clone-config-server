@@ -42,4 +42,11 @@ spring:
             - Path=/api/v1/uploads/**
           filters:
             - StripPrefix=2
-            - name: AuthenticationFilter    
+            - name: AuthenticationFilter
+        - id: notification-service
+          uri: ${NOTIFICATION_SERVICE_URI:lb://NOTIFICATION-SERVICE}
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter        
