@@ -49,4 +49,11 @@ spring:
             - Path=/api/v1/notification/**
           filters:
             - StripPrefix=2
-            - name: AuthenticationFilter        
+            - name: AuthenticationFilter  
+        - id: chat-service
+          uri: ${NOTIFICATION_SERVICE_URI:lb://CHAT-SERVICE}
+          predicates:
+            - Path=/api/v1/messages/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter     
